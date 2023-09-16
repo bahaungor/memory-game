@@ -1,0 +1,53 @@
+/*CSS RESET*/
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/*CSS FORM RESET*/
+/* Remove default margin and padding */
+input, textarea, select, button, meter, progress{
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none; /* Remove default focus outline */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    background-color: transparent; /* Reset background color */
+    font-family: inherit; /* Inherit font from parent */
+}
+  
+/* Reset button and submit input styles */
+button, input[type="submit"], input[type="button"] {
+    cursor: pointer;
+    background-color: transparent;
+}
+/* Reset checkbox and radio input styles */
+input[type="checkbox"], input[type="radio"] {
+    vertical-align: middle; /* Align the input with label text */
+}
+/* Reset select element styles */
+select {
+    appearance: none; /* Remove default dropdown arrow on Chrome */
+    background-image: none; /* Remove default background image */
+}
+/* Reset textarea styles */
+textarea {
+    resize: vertical; /* Allow vertical resizing */
+}
+/* Make labels & forms & buttons & inputs block-level elements */
+label, form, button, input{
+    display: block;
+}
+/* Hide arrows in number input */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number]{
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
