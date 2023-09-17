@@ -1,4 +1,16 @@
 .content{
     flex: 1;
-    padding: 50px;
+    padding: 5px;
+}
+
+.scores{
+    text-align: center;
+    font-size: 1.8rem;
+    padding: 5px;
+}
+
+.cardContainer{
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
 }

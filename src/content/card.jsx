@@ -1,9 +1,9 @@
-export default function Card({number}){
+export default function Card({number, handleClick, id}){
     const url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
 
     return (
-        <div className="card" style={{border:'var(--border)', cursor:'pointer'}}>
-        <img style={{width:'300px'}} src={`${url}${number}.png`} alt="Pokemon" />
+        <div onClick={handleClick} className="card" style={{border:'var(--border)', cursor:'pointer'}}>
+        <img style={{width:'100%'}} data-id={id} src={`${url}${number}.png`} alt="Pokemon" />
         </div>
     )
 }

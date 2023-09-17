@@ -1,6 +1,6 @@
 import './content.css'
 import Card from './card'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 
 export default function Content(){
     const arr = () => [...new Set(Array.from({ length: 12 }, (_, i) => i + 1).sort(() => Math.random() - 0.5))].slice(0, 12)
@@ -10,16 +10,34 @@ export default function Content(){
     const [order, setOrder] = useState(shuffleArray(newArr))
     const [best, setBest] = useState(0)
     const [score, setScore] = useState(0)
+    const [selection, setSelection] = useState([])
 
+    function handleClick(e){
+        if (selection.includes(e.target.dataset.id)){
+            console.log("same selection")
+            setOrder(shuffleArray(newArr))
+            setScore(0)
+            setSelection([])
+        } else{
+            const newSelection = [...selection]
+            newSelection.push(e.target.dataset.id)
+            setSelection(newSelection)
+            setOrder(shuffleArray(newArr))
+            setScore(score+1)
+        }
+    }
+    useEffect(() => {
+        if (score >= best) setBest(score)
+    }, [score, best]);
     return (
         <div className="content">
-            <div className="scores" style={{textAlign:'center', fontSize:'1.8rem', padding:'20px'}}>
+            <div className="scores" >
                 <div className="score">Score: {score}</div>
                 <div className="best">Best: {best}</div>
             </div>
-            <div className="cardContainer" style={{display:'flex', flexWrap:'wrap', justifyContent:'center', gap:'10px'}}>
+            <div className="cardContainer">
                 {order.map(number => 
-                <div key={number}><Card number={number}/></div>
+                <Card handleClick={handleClick} id={number} number={number} key={number} />
             )}
             </div>
         </div>
